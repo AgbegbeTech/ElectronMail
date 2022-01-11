@@ -1,10 +1,10 @@
+import {ACCOUNTS_OUTLET, ESC_KEY, NOTIFICATIONS_OUTLET, SETTINGS_OUTLET, STUB_OUTLET} from "src/web/browser-window/app/app.constants";
 import {Component, HostListener} from "@angular/core";
 import {Location} from "@angular/common";
-import {Store} from "@ngrx/store";
-
-import {ACCOUNTS_OUTLET, ESC_KEY, NOTIFICATIONS_OUTLET, SETTINGS_OUTLET, STUB_OUTLET} from "src/web/browser-window/app/app.constants";
 import {NAVIGATION_ACTIONS} from "src/web/browser-window/app/store/actions";
 import {State} from "src/web/browser-window/app/store/reducers/root";
+import {Store} from "@ngrx/store";
+import {setTheme} from "ngx-bootstrap/utils";
 
 export type CloseableOutletsType =
     | typeof NOTIFICATIONS_OUTLET
@@ -29,7 +29,9 @@ export class AppComponent {
     constructor(
         private location: Location,
         private store: Store<State>,
-    ) {}
+    ) {
+		setTheme("bs4");
+	}
 
     @HostListener("document:keyup", ["$event"])
     onKeyUp({key}: KeyboardEvent): void {

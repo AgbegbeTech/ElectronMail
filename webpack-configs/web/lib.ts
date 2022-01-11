@@ -1,5 +1,5 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import MiniCssExtractPlugin_ from "mini-css-extract-plugin";
 import {Configuration, RuleSetRule} from "webpack";
 import {noop} from "remeda";
 import {merge as webpackMerge} from "webpack-merge";
@@ -7,6 +7,9 @@ import {merge as webpackMerge} from "webpack-merge";
 import {BuildEnvVars} from "webpack-configs/model";
 import {ENVIRONMENT, ENVIRONMENT_STATE, buildBaseConfig, outputRelativePath, srcRelativePath, typescriptLoaderRule} from "./../lib";
 import {WEBPACK_WEB_CHUNK_NAMES} from "src/shared/webpack-conts";
+
+// TODO remove on https://github.com/webpack-contrib/mini-css-extract-plugin/issues/896 resolving
+const {default: MiniCssExtractPlugin} = MiniCssExtractPlugin_ as unknown as { default: typeof MiniCssExtractPlugin_ & { loader: string } };
 
 export const sassLoaderRuleSetRules: RuleSetRule[] = [
     {
